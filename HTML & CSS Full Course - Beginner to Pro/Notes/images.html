@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Images</title>
+
+  <style>
+    .first {
+      /* Kada postavimo samo width, height se automatski promijeni da ostane omjer */
+      width: 300px;
+
+      /* Dodavanje heighta ce ju deformirati */
+      height: 300px;
+
+      /* Ako bas zelimo da je slika 300x300 npr. postoji property object-fit */
+      /* Ovo ce cropati sliku i vidjet cemo samo 300x300 slike koja nece biti deformirana */
+      object-fit: cover;
+      
+      /* Mozemo odrediti koji dio slike zelimo vidjeti, po defaultu je centar slike,
+         ali mozemo to promijeniti sa object-position */
+      object-position: center;
+      /* Moze biti left, right, ali sko stavimo contain, onda ce se vidjeti cijela slika,
+         a gore i dole, gdje fali ce biti bijelo odnosno prazno, prikazano na slici ispod */
+
+      
+    }
+
+    .second {
+      width: 300px;
+      height: 300px;
+      object-fit: contain;
+
+      /* Ovo je samo da se bolje vidi efekt */
+      border: 2px solid blue;
+      background-color: beige;
+
+      /* U ovom slucaju, object position nam moze pomaknuti sliku gore (top) ili dole (botton) */
+      object-position: top;
+      /* Po defaultu je u sredini */
+
+      /* Takoder mozemo napraviti zaobljene uglove sa border-radiusom,
+         Ako zelimo da bude okrugla, mozemo staviti na 50% */
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    Dvije slike za test, gornja pokazuje object-fit cover, a donja contain property
+  -->
+  <img class="first" src="example-image.jpg">
+
+  <img class="second" src="example-image.jpg">
+
+</body>
+
+</html>

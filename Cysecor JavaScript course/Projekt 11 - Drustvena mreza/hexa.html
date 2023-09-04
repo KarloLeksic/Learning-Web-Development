@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Hexa</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="inner-container left-side">
+          <img src="img/profile.jpg" class="profile">
+
+          <p><b id="username">Cysecor</b></p>
+          <p id="email">Cysecor@gmail.com</p>
+
+          <button id="editAccount">Izmjeni profil</button>
+          <button id="logout">Odjavi se</button>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="inner-container right-side">
+          <form id="postForm">
+            <textarea id="postContent" placeholder="Napisi nesto i objavi"></textarea>
+            <button>Objavi</button>
+          </form>
+
+          <div id="allPostsWrapper">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="custom-modal">
+    <button id="close-modal">X</button>
+
+    <form id="editForm">
+      <h2>Izmjeni profil</h2>
+
+      <div>
+        <label for="">Korisnicko ime:</label>
+        <input type="text" name="korisnicko_ime" id="korisnicko_ime" placeholder="niko.nikolic1">
+      </div>
+
+      <div>
+        <label for="">Email adresa:</label>
+        <input type="email" name="edit_email" id="edit_email" placeholder="niko.nikolic@gmail.com">
+      </div>
+
+      <div>
+        <button>Izmjeni</button>
+      </div>
+    </form>
+
+    <hr>
+
+    <button id="deleteProfile">Obrisi Profil</button>
+  </div>
+
+
+  <script src="js/Sesion.js"></script>
+  <script src="js/Users.js"></script>
+  <script src="js/Comment.js"></script>
+  <script src="js/Post.js"></script>
+  <script src="js/hexa.js"></script>
+
+</body>
+
+</html>

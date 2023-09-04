@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>position</title>
+</head>
+
+<body style="
+  height: 3000px;
+  padding-left: 100px;
+">
+
+  <div style="
+      background-color: black;
+      color: white;
+      display: inline-block;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    ">
+    Bottom-right
+  </div>
+
+  <div style="
+      background-color: green;
+      color: white;
+      display: inline-block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 100px;      
+    ">
+    Left sidebar
+  </div>
+
+  <div>
+    Ovo je neka stranica aa a a a a
+  </div>
+
+  <style>
+
+    p{
+      margin: 0;
+      font-family: Arial;
+    }
+
+    .modal-title{
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .modal-content{
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <div style="
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    ">
+    <div style="
+      background-color: white;
+      width: 270px;
+      border-radius: 5px;
+      padding: 15px;
+    ">
+      <p class="modal-title">Modal Title</p>
+      <p class="modal-content">This is modal</p>
+      <button>Close</button>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

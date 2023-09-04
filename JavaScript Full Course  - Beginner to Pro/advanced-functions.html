@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Functions</title>
+</head>
+
+<body>
+  <script>
+
+    // Ovo je normalan nacin za pisanje funkcija
+    // Njegova prednost je ta da takvu funkciju mozemo pozvati i prije deklaracije - hoisting
+    function greeting() {
+      console.log('Hello');
+    }
+
+    // Funkcije su takoder vrijednosti i to znaci da ih mozemo spremiti u varijablu
+    const function1 = function greeting() {
+      console.log('Hello1');
+    };
+
+    // Mozemo to malo i ocistiti
+    const function2 = function () {
+      // ...
+    };
+
+    // Pozivanje te funkcije je isto kao i svako drugo
+    function1();
+
+    // Zato jer su funkcije vrijednosti, takoder ju mozemo pohraniti u objekt
+    // Sada je to metoda jer je u objektu, ali ista stvar
+    const object1 = {
+      num: 2,
+
+      // Cak nam ni netreba greeting jer je suvisno
+      fun: function greeting() {
+        console.log('Hello3');
+      }
+    };
+
+    // Pozivanje
+    object1.fun();
+
+    // Prosljedivanje vrijednosti u funkciju
+    function display(param) {
+      console.log(param);
+    }
+    display(2);
+
+    // Zato jer je funkcija vrijednost, mozemo prosljediti funkciju funkciji
+    function run(param) {
+      param();
+    }
+
+    run(function () {
+      console.log('hello4');
+    });
+
+
+
+    // Builtin funkcija za odgodu
+    // 1. parametar je funkcija koja se izvrsava
+    // 2. parametar je kolko dugo se ceka da se pokrene ta funkcija u ms
+    // Pokrenemo i za 3 sekunde dobijemo ispis timeout - ne blokira kod da se dalje izvrsava
+    setTimeout(function () {
+      console.log('timeout');
+    }, 3000);
+
+    // Ovo se ispisuje prije ovoga gore zato kad on zapravo ne ceka 3 sekunde nego postavlja timer i ide dalje
+    // To je asinkroni kod - kompjuter nece cekati da se izvrsi prije nego ode na sljedecu lajnu
+    // Sinkroni znaci da ce pricekati jednu lajnu da se izvrsi pa onda ide na sljedecu
+    console.log('Next line');
+
+    // Ista 2 parametra ko i prethodna sunkcija
+    // Svake 3 sekunde izvrsava taj kod koji je u funkciji
+    // Isto je asinkrona funkcija
+    setInterval(function () {
+      console.log('interval');
+    }, 3000);
+
+    console.log('Next line 2');
+
+
+    // Kada imamo forEach metodu za neko objekt onda nemozemo koristiti continue nego return, to radi istu stvar
+    // Takoder nemozemo koristiti break. Kad trebamo break onda koristimo normalnu for petlju
+
+
+    // Kracu nacin za pisanje funkcija -> Arrow funkcije
+    // Sve radi isto kao i kod normalnih
+
+    const arrowFunction = (param, param2) => {
+      console.log('Hellooooo');
+    };
+
+    arrowFunction();
+
+    // Razlike -> arrow imaju kratice
+    // Npr. kada imamo jedan parametar zagrade mozemo ukloniti
+    const oneParam = param => {
+      console.log(param + 1);
+    }
+
+    // Jos primjera. ovo dvoje je isto
+    const oneLine = () => 2 + 3;
+    // const oneLine = () => { return 2 + 3 };
+
+    // Arrow funkcije u objektu
+    const object2 = {
+      method: () => {
+
+      },
+
+      // Ista stvar samo kratica, preporuka
+      method2() {
+
+      }
+    };
+
+
+    // Ako imamo recimo neki niz brojeva i zalimo uklonit neke brojeve
+    // Ovo je ko foreach
+    // Uzima prvu vrijednost, sprema ju u value, pokrece funkciju, id za svaku
+    // Jedina je razilka da ce funkcija vratiti value
+    // Ova funkcija radi dupli array i ako funkcija vraca true, onda on tu vrijednost stavlja u taj novi array
+    console.log([1, -3, 5].filter((value, index) => {
+      // Idemo ukloniti negativne brojeve
+      /*if(value < 0) {
+        return false;
+      } else {
+        return true;
+      }*/
+
+      // Ili skraceno
+      return value >= 0;
+    })); // [1, 5]
+
+
+    // Zelimo napraviti kopiju di su svi dupli
+    // map uzme prvu parametar, kopira ga u value i pokrene funkciju
+    // Rezultat nam je za svaki element ono sta funkcija vrati
+    // Recimo ako zelimo poduplati onda napravimo ovako
+    // Pretvara array u novi array ovisno o funkciji
+    console.log([1, 1, 3].map((value, index) => {
+      return value * 2;
+    })); // [2, 2, 6]
+
+    // Ili skraceno
+    console.log([1, 1, 3].map(value => value * 2 )); // [2, 2, 6]
+    
+  </script>
+</body>
+
+</html>

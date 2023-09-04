@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS units</title>
+
+  <style>
+    .box {
+      border: 2px solid black;
+      height: 50px;
+      font-size: 40px;
+      background-color: rgb(255, 70, 70);
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .fifty-percent {
+      width: 50%;
+    }
+
+    .one-hundred-pixels {
+      width: 100px;
+    }
+
+    .parent {
+      border: 2px solid black;
+      width: 300px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- 
+    Kada imamo postotke onda se postotak odnosi na vanjski element!
+    Vidimo da je donji element u parentu i 50% je pola od parenta, a gornji
+    je 50% od cijele stranice tj. od bodyja jer mu je on ujedno i parent.
+    Pikseli su uvijek pikseli bez obzira na to gdje se nalaze!
+  -->
+  <div class="box fifty-percent">50%</div>
+  <div class="box one-hundred-pixels">100px</div>
+  <hr>
+  <div class="parent">
+    <div class="box fifty-percent">50%</div>
+    <div class="box one-hundred-pixels">100px</div>
+  </div>
+</body>
+
+</html>

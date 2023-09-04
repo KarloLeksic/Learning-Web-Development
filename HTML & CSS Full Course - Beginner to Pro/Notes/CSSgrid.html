@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CSS Grid</title>
+
+  <style>
+    .grid-container {
+      /* Moramo reci da je display grid */
+      display: grid;
+
+      /* Moramo reci koliko kolona ima, parametri su koliko je svaka kolona dugacka.
+         Broj argumenata odreduje broj kolona. */
+      grid-template-columns: 100px 100px;
+    }
+
+    .second-grid {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 100px 100px 200px;
+    }
+
+    .third-grid {
+      margin-top: 30px;
+      display: grid;
+      /* Ovo 1fr znaci da ce druga kolona zauzeti cijeli slobodan prostor do kraja ekrana */
+      grid-template-columns: 100px 1fr;
+    }
+
+    .grid4 {
+      margin-top: 30px;
+      display: grid;
+      /* Kada imamo ovakvu situaciju, prva kolona ce biti 100px, a druga i treca ce podjeliti ostatak ekrana da ga taman popune */
+      grid-template-columns: 100px 1fr 1fr;
+      /* Ako bi bilo 2 fr, onda bi ta koja ima 2 bila duplo veca od 1fr */
+    }
+
+    .grid5 {
+      margin-top: 30px;
+      display: grid;
+
+      /* Ovo ce podjeliti na 3 jednaka djela i ostale ce prijeci u novi red */
+      grid-template-columns: 1fr 1fr 1fr;
+
+      /* Da dodamo razmak izmedu kolona dodajemo culumn-gap */
+      column-gap: 10px; 
+
+      /* Isto mozemo dodati razmak izmedu redova */
+      row-gap: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Da bi napravili grid moramo napravit 2 stvari na containeru koji sadrzi divove, display grid i grid-template-colums -->
+  <div class="grid-container">
+
+    <!-- U gridu se automatski prebacuju na inline block bez razmaka izmedu divova -->
+    <div style="background-color: lightblue;">div 1</div>
+
+    <div style="background-color: lightpink;">
+      div 2
+      <!-- 
+        Ako stavimo neki element, drugi div ce biti duzi, ali ce ih grid 
+        jednako produziti tako da budu savrseno poravnati 
+      -->
+      <p>Test</p>
+    </div>
+  </div>
+
+
+  <!-- Drugi grid - svojstvo preljevanja u novi red ako nestane -->
+  <div class="second-grid">
+    <div style="background-color: lightblue;">100px</div>
+
+    <div style="background-color: lightpink;">100px</div>
+
+    <div style="background-color: lightblue;">200px</div>
+
+    <!-- Ako dodamo jedan div vise nego sto imamo u kojnfiguraciji, on prelazi u novi red -->
+    <div style="background-color: lightpink;">100px</div>
+  </div>
+
+
+  <!-- Treci grid - fr primjer-->
+  <div class="third-grid">
+    <div style="background-color: lightblue;">100px</div>
+
+    <div style="background-color: lightpink;">1fr</div>
+  </div>
+
+  <div class="grid4">
+    <div style="background-color: lightblue;">100px</div>
+    <div style="background-color: lightpink;">1fr</div>
+    <div style="background-color: lightblue;">1fr</div>
+  </div>
+
+  <!-- Razmak izmedu -->
+  <div class="grid5">
+    <div style="background-color: lightblue; height: 200px;">1fr</div>
+    <div style="background-color: lightpink;">1fr</div>
+    <div style="background-color: lightblue;">1fr</div>
+    <div style="background-color: lightpink;height: 200px;">1fr</div>
+    <div style="background-color: lightblue;">1fr</div>
+    <div style="background-color: lightpink;">1fr</div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+- JS tutorijal od supersimple deva - svi (amazon projekt)
+- Mozda i tutorijal malo za backend
+- SCSS SAAS, ...? - kazu da je bolje, bar malo vidit o cemu je rijec
+- Samostalno projekti (Drustvena mreza, webshop, portfolio website, ...)

@@ -1,0 +1,3 @@
+1. Kada imamo == onda on pretvara oba dva podatka u isti tip tako da npr. 5 == '5.00' vraca true! Zato uvijek koristimo ===, isto tako za !=
+
+2. Ako imamo neki if, da on bude netocan unutra moze biti: false, 0, '', NaN, undefined, null. Sve ostalo bude tocno.

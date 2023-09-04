@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS units</title>
+
+  <style>
+    .one-em {
+      font-size: 1em;
+    }
+
+    .one-rem {
+      font-size: 1rem;
+    }
+
+    .two-em {
+      font-size: 2em;
+    }
+
+    .two-rem {
+      font-size: 2rem;
+    }
+
+    .two-hundred-percent {
+      font-size: 200%;
+    }
+
+    .icon-container.large {
+      font-size: 30px;
+    }
+
+    .em-icon {
+      width: 1em;
+      height: 1em;
+    }
+
+    .rem-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .icon {
+      background-color: red;
+      display: inline-block;
+    }
+
+    .parent {
+      font-size: 30px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+  Relativne na font size kojeg smo definirali.
+  rem znaci relativno prema root font size-u.
+  em znaci relativno prema njegovom parentu.
+  -->
+
+
+  <!-- 
+    Ovdje su isti rem i em zato jer imaju isti root element pa se ni ne primjeti
+  -->
+  <div class="one-rem">1rem</div>
+  <div class="one-em">1em</div>
+  <div class="two-rem">2rem</div>
+  <div class="two-em">2em</div>
+
+  <hr>
+
+  <!--
+    Ovdje imamo kutiju koja je parent i on ima 30 velicinu.
+    1 rem je velik kao i onaj gornji, zato kad oba dva gledaju root (body).
+    1em je veci jer gleda prema parentu, a na njemu je 30. 
+    Dakle 100% od parenta, a to znaci duplo veci.
+  -->
+  <div class="parent">
+    <div class="one-rem">1rem</div>
+    <div class="one-em">1em</div>
+    <div class="two-rem">2rem</div>
+    <div class="two-em">2em</div>
+  </div>
+
+  <hr>
+
+  <!--
+    Isto vidimo da se rem ne mijenja jer ovisi o rootu, a em ovisi o parentu
+  -->
+  <div class="icon-container">
+    <div class="icon em-icon"></div>
+    <span class="icon-text">1em icon</span>
+  </div>
+  <div class="icon-container">
+    <div class="icon rem-icon"></div>
+    <span class="icon-text">1rem icon</span>
+  </div>
+  <div class="icon-container large">
+    <div class="icon em-icon"></div>
+    <span class="icon-text">1em icon</span>
+  </div>
+  <div class="icon-container large">
+    <div class="icon rem-icon"></div>
+    <span class="icon-text">1rem icon</span>
+  </div>
+
+  <!--
+    Isto mozemo sa postocima fonta jer isto ovise o parentu
+  -->
+
+</body>
+
+</html>

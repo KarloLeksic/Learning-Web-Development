@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Hexa</title>
+</head>
+
+<body>
+
+  <div class="logo">
+    <img src="img/logo.png">
+  </div>
+
+  <h1>Drustvena mreza namjenjena etickim hakerima</h1>
+
+  <div class="main-wrapper">
+    <form id="loginForm">
+      <h2>Login</h2>
+
+      <div>
+        <label for="">Email:</label>
+        <input type="email" name="email" id="login_email" placeholder="niko.nikolic@gmail.com">
+      </div>
+
+      <div>
+        <label for="">Lozinka</label>
+        <input type="password" name="lozinka" id="login_lozinka" placeholder="*********">
+      </div>
+
+      <div>
+        <button>Prijavi se</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="no-acc-register">
+    <p>Nemas racun?</p>
+    <button id="registracija">Registriraj se</button>
+  </div>
+
+  <div class="custom-modal">
+    <button id="close-modal">X</button>
+
+    <form id="registrationForm">
+      <h2>Registracija korisnika</h2>
+
+      <div>
+        <label for="">Korisnicko ime:</label>
+        <input type="text" name="korisnicko_ime" id="korisnicko_ime" placeholder="niko.nikolic1">
+      </div>
+
+      <div>
+        <label for="">Email adresa:</label>
+        <input type="email" name="register_email" id="register_email" placeholder="niko.nikolic@gmail.com">
+      </div>
+
+      <div>
+        <label for="">Lozinka:</label>
+        <input type="password" name="register_lozinka" id="lozinka" placeholder="***********">
+      </div>
+
+      <div>
+        <label for="">Ponovi lozinku:</label>
+        <input type="password" name="ponovi_lozinku" id="ponovi_lozinku" placeholder="***********">
+      </div>
+
+      <div>
+        <button>Registriraj se</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="js/Validator.js"></script>
+  <script src="js/Sesion.js"></script>
+  <script src="js/Users.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>

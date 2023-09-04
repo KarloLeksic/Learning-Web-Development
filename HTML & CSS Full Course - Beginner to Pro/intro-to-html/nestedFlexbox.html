@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Flexbox exercises</title>
+</head>
+
+<body style="padding-bottom: 1000px;">
+
+  <h3>13a</h3>
+
+  <div style="
+    display: flex;
+    height: 50px;
+  ">
+    <div style="
+      background-color: lightpink;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    ">
+      <div style="background-color: black; color: white;">item1</div>
+    </div>
+    <div style="
+      background-color: lightblue;
+      width: 200px;  
+    ">
+    </div>
+  </div>
+
+  <h3>13b</h3>
+
+  <div style="
+    display: flex;
+    height: 50px;
+    ">
+    <div style="
+      background-color: lightpink;
+      width: 100px;
+      ">
+      <!-- empty div-->
+    </div>
+
+    <div style="
+      background-color: lightblue;
+      width: 200px;
+      ">
+
+      <div style="display: flex;"> row1</div>
+
+      <div style="
+        display: flex;
+        justify-content: space-between;
+        ">
+        <div style="background-color: black; color: white;">row 2</div>
+        <div style="background-color: black; color: white;">row 2</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>13e</h3>
+
+  <style>
+    p {
+      margin: 0;
+      font-family: Arial;
+    }
+
+    .container {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+      width: 340px;
+      border-radius: 5px;
+    }
+
+    .all-inboxes {
+      font-size: 11px;
+      color: gray;
+      margin-left: 10px;
+      padding-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .flex1 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+
+    .prifile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      margin-left: 10px;
+      margin-right: 10px;
+      object-fit: cover;
+    }
+
+    .flex2 {
+      flex: 1;
+    }
+
+    .flex3 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .name {
+      flex: 1;
+      font-weight: bold;
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .time {
+      color: gray;
+      margin-right: 15px;
+      font-size: 12px;
+    }
+
+    .decs {
+      font-weight: bold;
+      font-size: 12px;
+      margin-bottom: 3px;
+    }
+
+    .message {
+      color: gray;
+      font-size: 12px;
+    }
+  </style>
+
+  <div class="container">
+    <p class="all-inboxes">ALL INBOXES</p>
+    <div class="flex1">
+      <img class="prifile-pic" src="cat.jpg">
+      <div class="flex2">
+        <div class="flex3">
+          <p class="name">Chewy Promotions</p>
+          <p class="time">4:58 PM</p>
+        </div>
+        <p class="decs">Biggest Sales of the year!</p>
+        <p class="message">Hey there! We're writting to tell you about our...</p>
+      </div>
+    </div>
+
+    <div class="flex1">
+      <img class="prifile-pic" src="dog.jpg">
+      <div class="flex2">
+        <div class="flex3">
+          <p class="name">Best buy</p>
+          <p class="time">12:32 PM</p>
+        </div>
+        <p class="decs">Your Best Buy eReceipt</p>
+        <p class="message">Thank you for shopping at Best Buy, here is...</p>
+      </div>
+    </div>
+
+    <div class="flex1">
+      <img class="prifile-pic" src="cat2.jpg">
+      <div class="flex2">
+        <div class="flex3">
+          <p class="name">Netflix</p>
+          <p class="time">9:00 AM</p>
+        </div>
+        <p class="decs">Here's what's coming soon to Netflix</p>
+        <p class="message">Brand new movies and shows, old favorites...</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>13f</h3>
+
+  <style>
+    .container-13f {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+      width: 420px;
+      border-radius: 5px;
+    }
+
+    .flexbox1 {
+      display: flex;
+      flex-direction: row;
+      padding-top: 8px;
+      padding-left: 10px;
+    }
+
+    .container2-13f {
+      margin-left: 10px;
+      flex: 1;
+    }
+
+    .slija {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 25px;
+    }
+
+    .flexbox2 {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 5px;
+    }
+
+    .channel-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    .channel-id {
+      font-size: 16px;
+      color: gray;
+    }
+
+    .post{
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .flexbox3 {
+      display: flex;
+      flex-direction: row;
+      border-width: 1px;
+      border-color: rgb(220, 220, 220);
+      border-style: solid;
+      border-radius: 13px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .yt-thumbnail {
+      width: 80px;
+      background-color: rgb(220, 220, 220);
+    }
+
+    .yt-info {
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .link {
+      color: gray;
+      font-size: 13px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    .video-title {
+      font-size: 13px;
+      margin-right: 5px;
+      margin-bottom: 15px;
+    }
+  </style>
+
+  <div class="container-13f">
+    <div class="flexbox1">
+      <img class="slija" src="cat.jpg">
+      <div class="container2-13f">
+        <div class="flexbox2">
+          <p class="channel-name">supersimple.dev</p>
+          <p class="channel-id">@SuperSimpleDev</p>
+        </div>
+        <p class="post">
+          What is backend web development? A complete overview. New video is up!
+        </p>
+
+        <div class="flexbox3">
+          <div class="yt-thumbnail"></div>
+          <div class="yt-info">
+            <p class="link">youtube.com</p>
+            <p class="video-title">Backend web development - a complete overview (2021)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

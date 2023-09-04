@@ -1,0 +1,330 @@
+.youtube-music {
+  background-color: rgb(32, 31, 31);
+  width: 350px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.youtube-title {
+  color: white;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.youtube-desc {
+  color: gray;
+  margin: 0;
+}
+
+.tweet-box {
+  display: block;
+  box-shadow: 0px 0px 5px 3px rgb(0, 0, 0, 0.15);
+  width: 400px;
+  border-radius: 7px;
+}
+
+.tweet-image {
+  display: inline-block;
+  vertical-align: middle;
+  height: 50px;
+  border-radius: 25px;
+  margin-right: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.tewwt-message {
+  display: inline-block;
+  margin-right: 120px;
+  color: gray;
+}
+
+.tweet-button {
+  display: inline-block;
+  background-color: rgb(13, 110, 253);
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 12px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.friend-box {
+  margin-top: 30px;
+  margin-right: 20px;
+  width: 200px;
+  display: inline-block;
+  box-shadow: 0 0 5px 5px rgb(0, 0, 0, 0.15);
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  object-position: left;
+}
+
+.friend-name {
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+
+.mutal-friends {
+  margin-top: 0;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  color: gray;
+}
+
+.add-button {
+  background-color: rgb(13, 110, 253);
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.google-search {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.google-img {
+  width: 300px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.google-search-bar {
+  box-shadow: 0 0 10px 1px rgb(0, 0, 0, 0.15);
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  font-size: 15px;
+  width: 500px;
+  border-radius: 25px;
+  color: gray;
+  border: none;
+}
+
+.search-button {
+  display: inline-block;
+  margin-right: 10px;
+  background-color: rgb(243, 242, 242);
+  font-weight: bold;
+  margin-top: 35px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 15px;
+  padding-right: 15px;
+  cursor: pointer;
+}
+
+div {
+  margin: 0;
+}
+
+.oliver-example {
+  width: 400px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.15);
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.picture-section {
+  width: 80px;
+  display: inline-block;
+}
+
+.profile-slija {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  border-radius: 25px;
+}
+
+.info-section {
+  width: 200px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 6px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.animal {
+  color: gray;
+  font-size: 13px;
+}
+
+.popular {
+  font-size: 13px;
+  color: gray;
+}
+
+.follow-button {
+  background-color: rgb(13, 110, 253);
+  color: white;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  margin-top: 14px;
+  margin-left: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.container-12e {
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  max-width: 300px;
+  border-radius: 10px;
+  font-size: 14px;
+  
+}
+
+.flex-12e {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-bottom: 10px;
+  padding-right: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-12e {
+  background-color: rgb(24, 119, 242);
+  color: white;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 20px;
+}
+
+p {
+  font-family: Arial;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.container-12g {
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  max-width: 370px;
+  border-radius: 10px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pic {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.info {
+  width: 200px;
+  margin-left: 5px;
+}
+
+.flwbtn {
+  background-color: rgb(29, 155, 240);
+  color: white;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.name12e {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.category12e {
+  font-size: 14px;
+  color: gray;
+  margin-bottom: 2px;
+}
+
+.popular12e {
+  font-size: 14px;
+  color: gray;
+}
+
+.home12f {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.search12f {
+  width: 400px;
+  font-size: 15px;
+  padding-left: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 20px;
+  border: none;
+}
+
+.btn12f {
+  background-color: rgb(120, 82, 178);
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 18px;
+  padding-right: 18px;
+  cursor: pointer;
+}

@@ -1,0 +1,29 @@
+/* 
+Kada bi koristili samo body onda nebi imali prioritet, 
+ali kada koristimo html body tada smo preciznije odredili 
+pa imamo prednost, tj. vide se nase promjene na stranici 
+*/
+html body {
+	background-color: #111d29;
+	/* 
+	Ili bi mogli napisati !important na kraju linije: 
+
+	background-color: #111d29 !important;
+	*/
+}
+
+html body a {
+	color: #b1d237 !important;
+}
+
+#SIvCob {
+	color: #fff !important;
+}
+
+#SIvCob a {
+	color: #b1d237 !important;
+}
+
+.sfbg {
+	background-color: #111d29 !important;
+}

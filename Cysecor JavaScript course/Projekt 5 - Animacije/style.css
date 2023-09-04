@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
+}
+
+.section {
+  height: 100vh;
+}
+
+/* 
+Centriranje teksta da bude na sredini ekrana
+U ovom slucaju je ovo dobro koristiti
+*/
+.section h1 {
+  text-align: center;
+  line-height: 100vh;
+  font-size: 5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Prvo stavimo te spanove u kojima su slova da se ne vide */
+.section h1 span {
+  opacity: 0;
+
+  /* Za animaciju */
+  transition: all 0.3s ease;
+  transform: translateY(50px);
+  
+  /* Da bi moglo ici odozdola */
+  display: inline-block;
+}
+
+/* Klasa za animaciju */
+/* Ako se doda klasa on se pomakne, ako se makne onda se vrati */
+.section .fadeMove {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.section2 .images {
+  display: flex;
+}
+
+.section2 .images img{
+  width: 50%;
+  opacity: 0;
+  transition: all 2s ease;
+}
+
+/* Skrivanje auta i pomicanje skroz u stranu */
+.section2 .images img.slideFromLeft {
+  transform: translateX(-50%);
+}
+
+.section2 .images img.slideFromRight {
+  transform: translateX(50%);
+}
+
+/* Klasa koja spaja aute */
+.section2 .images img.animated {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+
+.section2 h1 {
+  line-height: 1.3;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+
+.border-line {
+  height: 2px;
+  /* Kada mjenjamo width mjenjamo joj duzinu, ali bez animacije */
+  width: 0%;
+  transition: all 0.5s ease;
+  background-color: white;
+}

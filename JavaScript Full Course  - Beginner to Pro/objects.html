@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects</title>
+</head>
+
+<body>
+  <script>
+    // Objekti su grupe nekih vrijednosti
+    // Kada stavimo {} onda je to objekt
+    // name, price su mu propertyji
+    const product = {
+      // Property: value
+      name: 'socks',
+      price: 1090
+    };
+
+    // Za pristupanje odredenom propertyju koristimo tocku
+    console.log(product.price); // 1090
+
+    // Mijenjanje propertyja name
+    product.name = 'cotton socks';
+
+    // Dodavanje propertyja
+    product.newProperty = true;
+    console.log(product); // {name: 'cotton socks', price: 1090, newProperty: true}
+
+    // Mozemo i brisati propertyje
+    delete product.newProperty;
+    console.log(product); // {name: 'cotton socks', price: 1090}
+
+
+    // Drugi nacin za pristupanje
+    const product2 = {
+      name: 'shirt',
+      'delivery-time': '1 day',
+
+      // Unutar objekta mozemo imati vise objekata - nested objects
+      rating: {
+        starts: 4.5,
+        count: 87
+      },
+
+      // Mozemo i funkcije stavljati u objekte jer on gleda funkciju kao vrijednost - value, a objekt nam sluzi da pohranjujemo vrijednosti
+      // Ovo se zove metoda!
+      fun: function function1() {
+        console.log('Function inside object'); // Function inside object
+      }
+    };
+
+    // Isto vraca name kao i da smo s tockom napisali
+    console.log(product2['name']); // shirt
+
+    // Prednost koristenja []
+    // Ovo je greska jer on misli da oduzimamo
+    // console.log(product2.delivery-time);
+    // Ali ako napravimo ovako, uspijet cemo i imamo undefined jer nije definiran
+    console.log(product2['delivery-time']); // 1 day
+    // To nebi mogli napraviti da koristimo tocku
+
+    // Koristimo tocku po defaultu, ali kad nemozemo s tockom onda stavimo []
+
+    // Za pristupanje nested objektima
+    console.log(product2.rating.starts); // 4.5
+
+    // Pozivanje funkcije u objektu
+    product2.fun();
+
+    // Postoje Built-in objekti:
+    // 1. JSON - sintaksa za javascript objekte - svaki property mora biti u "" jer ne podrzava single quotes i JSON ne podrzava funkcije
+    // Mozemo pretvoriti objekt u JSON sa builtin objektom
+    console.log(JSON.stringify(product2)); // {"name":"shirt","delivery-time":"1 day","rating":{"starts":4.5,"count":87}}
+    // Funkcija koja je u objektu nije u JSON-u
+    // Rezultat nam je obican string 
+
+    // Pretvorba obrnuto
+    const jsonString = JSON.stringify(product2);
+    console.log(JSON.parse(jsonString)); // {name: 'shirt', delivery-time: '1 day', rating: {starts: 4.5, count: 87}}
+    // Dobijemo objekt kak smo ga i imali prije jsona
+
+    // 2. localStorage - sluzi za spremanje vrijednosti permanentno
+    // Varijable su privremene i postoje samo na trenutnoj stranici, te ako refreshamo stranicu one se brisu
+    // Za stvaranje zapisa trebaju nam 2 vrijednosti, ime i vrijednost i to su nam parametri
+    // localStorage podrzava samo stringove
+    localStorage.setItem('message', 'hello');
+
+    // Citanje iz localStorage-a
+    console.log(localStorage.getItem('message')); // hello
+
+    // Brisanje 
+    localStorage.removeItem('message');
+
+    // Svaka vrijednost ima jos neke svoje propertyje i metode kojima se mozemo koristiti
+    console.log('hello'.length); // 5
+    console.log('hello'.toUpperCase()); // HELLO
+    // To je Auto-Boxing i svaki objekt JS upakira u taj neki specijalni objekt pa imamo te metode 
+    // Radi i sa brojevima i booleanovima
+    // Jedino ne radi sa undefined i null
+
+    // object1 je samo referenca na taj objekt negdje u memoriji
+    // Iako koristimo const, mozemo mijenjati jer je to referenca, konstantna je referenca, ne sve u objektu
+    const object1 = {
+      message: 'hello'
+    };
+
+    // Kopija reference, ne objekta - Copy By Reference
+    const object2 = object1;
+
+    object1.message = 'Good job!';
+    console.log(object1); // {message: 'Good job!'}
+    console.log(object2); // {message: 'Good job!'}
+    // Poruke su iste zato kad imaju istu referencu, oba dva pokazuju na isti dio memorije, a promijenili smo samo jedan
+
+
+    // Usporedivanje objekata - object1 i object3 su isti (isti im je sadrzaj)
+    const object3 = {
+      message: 'Good job!'
+    }
+
+    console.log(object3 === object1); // false
+    // False je zato kad smo uspredivali reference (mjesto u memoriji), a one su razlicite
+    console.log(object2 === object1); // true - i to znaci da imaju istu referencu, a moraju i imati jer smo gore napravili objekt 2 iz jedinice (110 linija)
+
+    // Jos neke kratice
+    // Zelimo dohvatiti message
+    const object4 = {
+      message: 'Good job!',
+      price: 799
+    }
+
+    // Ovo je oke
+    // const message = object4.message;
+    // Ali imamo kraticu koja radi istu stvar, a radi samo kada imamo istu vraijablu kao property, isto da se zoveju
+    //const { message } = object4;
+    //console.log(message); // Good job!
+
+    // Taj precac mozemo koristiti za vise propertyja
+    const { message, price } = object4;
+    console.log(price); // 799
+
+
+    const object5 = {
+      // Ovako ce povuci message varijablu od gore sto god bilo u njoj
+      // message: message
+
+      // A shorthand property (skracenica) je
+      message,
+
+      // Metoda
+      // method: function function1() {
+      //   console.log('method');
+      // }
+
+      // Skracenica je za metodu
+      method() {
+        console.log('method');
+      }
+    }
+
+    console.log(message); // Good job!
+
+    // Pozivanje metode
+    object5.method();
+  </script>
+</body>
+
+</html>

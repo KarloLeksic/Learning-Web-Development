@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Position</title>
+</head>
+
+<body style="padding-bottom: 1000px; padding-top: 50px; padding-left: 70px;">
+
+  <!--
+    Zelimo da ovo bude kao nekakav header i da on bude fiksni, da ostaje na stranici dok se skrola.
+    Kada stavimo position fixed, onda nam on ostaje "zaljepljen" na stranici i kolko god skrolamo on ce biti na istom mjestu.
+    Ako ga samo tako stavimo onda ce nam prekrivati dio kontenta na stranici jer on leti iznad svega.
+    Sa parametrima top, left, right, bottom, odredujemo gdje ce on biti na stranici.
+    Npr. ako stavimo top 0, to znaci da ce pocinjati odozgo skroz.
+    Ako recimo stavimo left 0 i right 0, on ce ga rastegnuti od ruba do ruba.
+    Mozemo onda staviti gore, ljevo i desno na 0 da bude skroz gore, i onda mu zadamo visinu.
+    Zbog toga sta nam prekriva ove divove, dodamo malo paddinga u body da se pomakne dolje.
+  -->
+  <div style="
+    background-color: black;
+    color: white;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+  ">Header</div>
+
+
+  <!-- Sidebar nam je ista fora sa position fixed samo su drugi parametriza poziciju -->
+  <div style="
+    background-color: green;
+    color: white;
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    top: 50px; /* Da ne prekriva header */
+    width: 70px;
+    /* Opet prekriva pa se doda malo paddinga u body */
+  ">Sidebar
+
+    <!--
+      Ako se position absolute nalazi unutar position fixeda, onda se ovi top, left, right propertyji odnose
+      na top od tog elementa, znaci ne od cijele stranice ko za prethodni primjer (ispod di je gol position absolute).
+      Vidimo da je gore desno u zelenom elementu.
+    -->
+    <div style="
+      position: absolute;
+      background-color: red;
+      color: white;
+      right: 0px;
+      top: 0px;
+    ">X</div>
+  </div>
+
+
+  <!--
+    Position absolute znaci da se nesto nalazi na odredenom dijelu stranice. 
+    Recimo ako stavimo left i right na 10, on ce bit na tom mjestu na stranici, znaci kad skrolamo
+    on ce se pomicati, dok position fixed nece. Prekriva header zato jel je napisan ispod headera.
+    Ako gore u headeru napisemo z-index, onda ga mozemo pomaknuti da bude ispred.
+    Ovako cemu jako rijetko korisniti position absloute
+  -->
+  <div style="
+    position: absolute;
+    background-color: red;
+    color: white;
+    right: 10px;
+    top: 60px;
+  ">Absolute</div>
+
+  <!--
+    Ako stavimo position relative na neki element, on ce se ponasati isto ko i inace, ali ako se u position relative doda
+    position absolute, onda se taj absolute ponasa unutar tog elementa. Left je ljevi rub elementa...
+    Vidimo u drugom divu kak se ponasa absolute unutar relativa.
+
+    Dakle position absolute mora biti u position relativu da bi isli jedan preko drugoga!
+  -->
+  <div style="
+    background-color: lightblue;
+    height: 200px;
+    width: 200px;
+  ">div 1</div>
+
+  <div style="
+    background-color: lightpink;
+    height: 200px;
+    width: 200px;
+
+    position: relative;
+  ">div 2
+
+    <div style="
+      position: absolute;
+      background-color: red;
+      color: white;
+      right: 10px;
+      top: 60px;
+      ">Absolute</div>
+  </div>
+
+  <!--
+    Po defaultu je position static i ona uvijek ide odozada, ne prikazuje se ispred nekog elementa ako je napisana poslje kao div 2 sada.
+    Div 1 je position static, a div 2 relative i vidimo na stranici razliku kad skrolamo.
+    Da to fixamo, mozemo postaviti z-index na onog kojeg zelimo da se vidi preko nekog.
+  -->
+
+</body>
+
+</html>

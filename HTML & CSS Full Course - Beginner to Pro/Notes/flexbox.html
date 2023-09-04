@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox</title>
+
+  <style>
+    .flex-container {
+      /* Ovo pretvara kontener u flex box, nakon ovoga svi unutar postaju inline-block i redaju se jedan na drugog */
+      /* Elementi uzmu tocno onoliko mjesta koliko im treba dok za grid odmah postavljamo njigovu sirinu */
+      display: flex;
+
+      /* Po defaultu je flex direction postavljen na row, ali svakako ga mozemo pozvati, to znaci da ce ga poravnati horizontalno */
+      flex-direction: row;
+    }
+
+    .flex-container2 {
+      margin-top: 30px; /* Samo da se odvoje */
+      display: flex;
+      flex-direction: row;
+    }
+
+    .flex-container3 {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .flex-container4 {
+      /* Osnovni flexbox sa borderom da se bolje vidi i visinom nekon */
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      height: 70px;
+      border: 1px solid gray;
+
+      /* Poravnanje horizontalno, moze biti start, end, center i to se pomicu svi na hrpi, zaljepljeni su i pomicu se zajedno */
+      justify-content: center;
+    }
+
+    .flex-container5 {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      height: 70px;
+      border: 1px solid gray;
+
+      /* Slican primjer kao prethodni, samo sto ih ovako razdvajamo da ima izmedu razmak */
+      justify-content: space-between;
+    }
+
+    .flex-container6 {
+      /* Sve isto ko prethodno */
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      height: 70px;
+      border: 1px solid gray;
+      justify-content: space-between;
+
+      /* Vertikalno poravnanje, default je stretch i to znaci da ih rasiri po cijeloj visini flexboxa. */
+      /* Mozemo ih poravnati na start i to znaci da ceju otici gore, end za dole, center za sredinu */
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--
+    Isto kao i grid, flexbox zahtijeva container u kojem ce biti
+  -->
+  <div class="flex-container">
+    <div style="background-color: lightblue;">div 1 text</div>
+
+    <!-- Isto kao i grid, ako stavimo neki paragraf da bude duzi element, flexbox ih poravna tako da i plavi bude dugacak ko i rozi -->
+    <div style="background-color: lightpink;">div 2 <p>test</p> </div>
+  </div>
+
+
+  <div class="flex-container2">
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+
+    <!-- Kada dodamo flex 1, to znaci da on zauzima ostatak elementa, kao 1fr u gridu -->
+    <div style="background-color: lightpink; flex: 1;">flex: 1</div>
+  </div>
+
+
+  <div class="flex-container3">
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+    <div style="background-color: lightpink; flex: 1;">flex: 1</div>
+
+    <!-- flex 2 je isto kao 2fr u gridu -->
+    <div style="background-color: lightblue; flex: 2;">flex: 2</div>
+    <!-- 
+      Mozemo i mijenjati redosljed, oni ceju ostati u tim velicinama dok recimo kod grida nemozemo 
+      mijenjati pozicije i da se mijenjaju velicine jer je zadano u pocetku koja kolona je oklko siroka 
+    -->
+  </div>
+
+
+  <!-- 
+    Ovdje imamo 3 diva koji ne popunavaju cijelu duzinu flexboxa (vidimo bijele praznine).
+    Mozemo zapravo mijenjati kako da oni budu poravnati horizontalno sa propertyjem justify-content
+  -->
+  <div class="flex-container4">
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+    <div style="background-color: lightpink; width: 100px;">100px</div>
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+  </div>
+
+  <!-- Razdvajanje horizontalno -->
+  <div class="flex-container5">
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+    <div style="background-color: lightpink; width: 100px;">100px</div>
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+  </div>
+
+  <!-- Pomicanje vertikalno -->
+  <div class="flex-container6">
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+    <div style="background-color: lightpink; width: 100px;">100px</div>
+    <div style="background-color: lightblue; width: 100px;">100px</div>
+  </div>
+</body>
+
+</html>

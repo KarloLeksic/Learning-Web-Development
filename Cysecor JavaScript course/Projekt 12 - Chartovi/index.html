@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Chart JS</title>
+</head>
+
+<body>
+
+  <div class="chart-wrapper">
+    <div>
+      <div>
+        <canvas id="lineChart"></canvas>
+      </div>
+    </div>
+
+    <div>
+      <canvas id="pieChart"></canvas>
+    </div>
+
+    <div>
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+
+  <!-- 
+    Blblioteku smo ukljucili tako da smo otvorili
+    CDN i kopirali link gdje se nalazi stranica puna koda i zaljepili ga tu u src.
+    Mora biti prije scrpit.js jer se tamo koristi
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.3/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
