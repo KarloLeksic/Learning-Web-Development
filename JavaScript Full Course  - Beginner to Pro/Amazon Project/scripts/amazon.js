@@ -4,6 +4,7 @@
 // 3. input - tamo gdje je zelimo koristiti
 import { cart, addToCart } from '../data/cart.js';
 import { products } from '../data/products.js';
+import { formatCurrecny } from './utils/money.js';
 // Vazno za module:
 // Moramo importe napraviti na pocetku 
 // Moramo koristiti Live Server da bi moduli radili
@@ -42,7 +43,7 @@ products.forEach(product => {
       </div>
 
       <div class="product-price">
-        $${(product.priceCents / 100).toFixed(2)}
+        $${formatCurrecny(product.priceCents)}
       </div>
 
       <div class="product-quantity-container">
