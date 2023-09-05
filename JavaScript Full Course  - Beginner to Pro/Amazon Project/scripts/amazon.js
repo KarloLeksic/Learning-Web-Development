@@ -3,6 +3,7 @@
 // 2. Export - u cart.js
 // 3. input - tamo gdje je zelimo koristiti
 import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
 // Vazno za module:
 // Moramo importe napraviti na pocetku 
 // Moramo koristiti Live Server da bi moduli radili
