@@ -2,8 +2,8 @@
 // 1. Dodavanje tipa modula - u amazon.html-u na dnu
 // 2. Export - u cart.js
 // 3. input - tamo gdje je zelimo koristiti
-import {cart} from '../data/cart.js';
-import {products} from '../data/products.js';
+import { cart, addToCart } from '../data/cart.js';
+import { products } from '../data/products.js';
 // Vazno za module:
 // Moramo importe napraviti na pocetku 
 // Moramo koristiti Live Server da bi moduli radili
@@ -82,6 +82,18 @@ products.forEach(product => {
 // Stavljanje prethodno generiranog HTML-a na stranicu koristeci DOM
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
+function updateCartQuantity() {
+  // Racunanje koliko ukupno imamo u kosarici
+  // Prolazimo kroz sve proizvode u kosarici i zbrajamo kolicine
+  let cartQuantity = 0;
+  cart.forEach(cartItem => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  // Prikazivanje tog broja u kosarici na vrhu stranice
+  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+}
+
 // Dodavenje funkcionalnosti na add to cart button
 document.querySelectorAll('.js-add-to-cart-button')
   // Idemo kroz svaki button
@@ -95,32 +107,8 @@ document.querySelectorAll('.js-add-to-cart-button')
       // console.log(button.dataset.productID); // productID smo vidli tako da ispisemo objekt koji nam vraca kad kliknemo na button
       const productId = button.dataset.productId;
 
-      // Provjera jel on vec u kosarici, ako je povecanje kolicine, ako nije dodavanje
-      let matchingItem;
-
-      cart.forEach(item => {
-        if (productId === item.productId) {
-          // Vec je on u kosarici
-          matchingItem = item;
-        }
-      });
-
-      if (matchingItem) {
-        matchingItem.quantity++;
-      } else {
-        cart.push({
-          productId: productId,
-          quantity: 1
-        });
-      }
-
-      // Racunanje koliko ukupno imamo u kosarici
-      let cartQuantity = 0;
-      cart.forEach(item => {
-        cartQuantity += item.quantity;
-      });
-
-      // Prikazivanje tog broja u kosarici na vrhu stranice
-      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+      addToCart(productId);
+      updateCartQuantity();
     });
   });
+
