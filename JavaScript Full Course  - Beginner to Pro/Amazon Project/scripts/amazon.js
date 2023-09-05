@@ -4,7 +4,7 @@
 let productsHTML = '';
 
 // Generiranje html-a za svaki produkt bolje nego hardcodanje
-products.forEach((product) => {
+products.forEach(product => {
   productsHTML += `
     <div class="product-container">
       <div class="product-image-container">
@@ -50,12 +50,53 @@ products.forEach((product) => {
         Added
       </div>
 
-      <button class="add-to-cart-button button-primary">
+      <button class="add-to-cart-button js-add-to-cart-button button-primary"
+      data-product-id="${product.id}">
         Add to Cart
       </button>
     </div>
   `;
 });
 
+// Gore u buttonu vidimo atribut data-product-id
+// Njegova je svrha dodati bilo koji atribut html elementu
+// Samo je bitno da pocinje sa data-
+
 // Stavljanje prethodno generiranog HTML-a na stranicu koristeci DOM
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
+
+// Dodavenje funkcionalnosti na add to cart button
+document.querySelectorAll('.js-add-to-cart-button')
+  // Idemo kroz svaki button
+  .forEach(button => {
+    // I dodavamo listenere
+    button.addEventListener('click', () => {
+      // Dodavanje u cart
+      // Cart nam je kao lista gdje imamo proizvode i koliko ih ima
+      // Dataset nam daje sve te atribute koje smo dodali kao data-
+      // Ponasa se kao objekt - znaci da ga mozemo pretrazivati sa .
+      // console.log(button.dataset.productID); // productID smo vidli tako da ispisemo objekt koji nam vraca kad kliknemo na button
+      const productId = button.dataset.productId;
+
+      // Provjera jel on vec u kosarici, ako je povecanje kolicine, ako nije dodavanje
+      let matchingItem;
+
+      cart.forEach(item => {
+        if (productId === item.productId) {
+          // Vec je on u kosarici
+          matchingItem = item;
+        }
+      });
+
+      if (matchingItem) {
+        matchingItem.quantity++;
+      } else {
+        cart.push({
+          productId: productId,
+          quantity: 1
+        });
+      }
+
+      console.log(cart);
+    });
+  });
