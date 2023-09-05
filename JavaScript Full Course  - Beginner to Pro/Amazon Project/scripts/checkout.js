@@ -38,7 +38,7 @@ cart.forEach(cartItem => {
             ${matchingProduct.name}
           </div>
           <div class="product-price">
-            ${matchingProduct.price}
+            $${(matchingProduct.priceCents / 100).toFixed(2)}
           </div>
           <div class="product-quantity">
             <span>
@@ -105,4 +105,3 @@ cart.forEach(cartItem => {
 // Dodavanje tih generiranih elemenata na stranicu
 document.querySelector('.js-order-summary')
   .innerHTML = cartSummaryHTML;
-  
