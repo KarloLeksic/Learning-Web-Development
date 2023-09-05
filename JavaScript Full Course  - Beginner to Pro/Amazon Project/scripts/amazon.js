@@ -97,6 +97,13 @@ document.querySelectorAll('.js-add-to-cart-button')
         });
       }
 
-      console.log(cart);
+      // Racunanje koliko ukupno imamo u kosarici
+      let cartQuantity = 0;
+      cart.forEach(item => {
+        cartQuantity += item.quantity;
+      });
+
+      // Prikazivanje tog broja u kosarici na vrhu stranice
+      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
     });
   });
