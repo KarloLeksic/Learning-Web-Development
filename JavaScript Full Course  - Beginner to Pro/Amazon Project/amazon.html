@@ -59,8 +59,14 @@
       </div>
     </div>
 
-    <script src="data/cart.js"></script>
+    <!-- 
+      Ovdje za cart.js koristimo Modul.
+      Njega koristimo tako da napravimo datoteku i ne ukljucimo ju kao script tag.
+      Tako izbjegavano name conflikte u razlicitim datotekama.
+      Kada je napisano i sve includeano u script tagovima to je isto kao da je napisano u jednoj velikoj dadoteci
+    -->
     <script src="data/products.js"></script>
-    <script src="scripts/amazon.js"></script>
+    <!-- Kad napisemo da je modul onda mozemo cupati varijable iz drugih fileova -->
+    <script type="module" src="scripts/amazon.js"></script>
   </body>
 </html>

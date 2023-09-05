@@ -1,2 +1,2 @@
 // Prazna kosarica na pocetku
-const cart = [];
+export const cart = [];

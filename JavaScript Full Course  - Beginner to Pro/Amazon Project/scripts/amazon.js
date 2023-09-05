@@ -1,3 +1,19 @@
+// Dobivanje varijable izvan datoteke (iz modula):
+// 1. Dodavanje tipa modula - u amazon.html-u na dnu
+// 2. Export - u cart.js
+// 3. input - tamo gdje je zelimo koristiti
+import {cart} from '../data/cart.js';
+// Vazno za module:
+// Moramo importe napraviti na pocetku 
+// Moramo koristiti Live Server da bi moduli radili
+
+// Benefiti modula:
+// 1. Izbjegavamo konflikte u nazivima varijabla, jedino kad importamo onda se moze dogoditi, ali nemoramo importati kad nemoramo
+// Mozemo i promijeniti naziv varijable tako da importamo na ovakav nacin
+// import {cart as myCart} from '../data/cart.js';
+// 2. Ne moramo brinuti o redosljedu ucitavanja skripti (kraj amazon.html-a)
+
+
 // Idemo citati podatke bolje nego da ih hardcodeamo u HTML-u
 
 // Za kombiniranje pojedinacnih produkata u jedan
