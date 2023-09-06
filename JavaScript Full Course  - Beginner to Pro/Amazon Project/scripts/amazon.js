@@ -47,7 +47,7 @@ products.forEach(product => {
       </div>
 
       <div class="product-quantity-container">
-        <select>
+        <select class="select-quantity-${product.id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -108,7 +108,14 @@ document.querySelectorAll('.js-add-to-cart-button')
       // console.log(button.dataset.productID); // productID smo vidli tako da ispisemo objekt koji nam vraca kad kliknemo na button
       const productId = button.dataset.productId;
 
-      addToCart(productId);
+      // Dohvacanje selektora koji sadrzi kolicinu
+      const selectQuantityElement = document.querySelector(`.select-quantity-${productId}`);
+       
+      // Pretvaranje kolicine u int
+      const quantity = parseInt(selectQuantityElement.value);
+
+      // Dodavanje u kosaricu i azuriranje broja u kosarici na vrhu stranice
+      addToCart(productId, quantity);
       updateCartQuantity();
     });
   });

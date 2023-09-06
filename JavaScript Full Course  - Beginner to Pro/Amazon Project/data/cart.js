@@ -1,14 +1,7 @@
 // Prazna kosarica na pocetku
-export const cart = [{
-  productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-  quantity: 7
-},
-{
-  productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-  quantity: 21
-}];
+export const cart = [];
 
-export function addToCart(productId) {
+export function addToCart(productId, quantity) {
   // Provjera jel on vec u kosarici, ako je povecanje kolicine, ako nije dodavanje
   let matchingItem;
 
@@ -29,7 +22,7 @@ export function addToCart(productId) {
       productId: productId,
       // Treba se dodati da cupa koliko je odabrano
       // Dodavanje vrijednosti svakom select elementu da se zna iz kojeg cupati vrijednost
-      quantity: 1
+      quantity: quantity
     });
   }
 }
