@@ -27,7 +27,7 @@ To see results run this on chrome or any other browser
 
 [Mdules](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/Amazon%20Project/scripts/amazon.js)
 
-[JSON](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/objects.html#72)
+[JSON](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/objects.html#L72)
 * Dodati jos na kojoj liniji, odma da odvede
 
 dodati za ostale stvari
