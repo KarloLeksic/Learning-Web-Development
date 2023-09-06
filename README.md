@@ -25,7 +25,7 @@ To see results run this on chrome or any other browser
 
 ## JavaScript
 
-[Mdules](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/Amazon%20Project/scripts/amazon.js0)
+[Mdules](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/Amazon%20Project/scripts/amazon.js)
 
 [localStorage, JSON](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/objects.html)
 * Dodati jos na kojoj liniji, odma da odvede
