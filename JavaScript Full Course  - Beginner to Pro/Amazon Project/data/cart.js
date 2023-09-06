@@ -15,7 +15,7 @@ export function addToCart(productId, quantity) {
 
   // Ako je pronasao onaj koji vec je u kosarici samo povecati kolicinu
   if (matchingItem) {
-    matchingItem.quantity++;
+    matchingItem.quantity += quantity;
   } else {
     // Ako on nije u kosarici onda dodati novog
     cart.push({

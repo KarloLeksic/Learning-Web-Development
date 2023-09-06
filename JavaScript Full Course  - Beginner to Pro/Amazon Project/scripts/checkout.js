@@ -5,6 +5,8 @@ import { cart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrecny } from './utils/money.js';
 
+console.log(cart);
+
 let cartSummaryHTML = '';
 
 // Opet idemo kroz kosaricu i generiramo elemente
