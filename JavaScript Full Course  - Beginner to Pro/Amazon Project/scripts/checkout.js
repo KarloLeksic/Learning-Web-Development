@@ -1,11 +1,9 @@
 // Ponovno idemo generirati HTML
 
 // Treba nam nasa kosarica i produkti
-import { cart } from '../data/cart.js';
+import { cart, removeFromCart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrecny } from './utils/money.js';
-
-console.log(cart);
 
 let cartSummaryHTML = '';
 
@@ -47,10 +45,10 @@ cart.forEach(cartItem => {
             <span>
               Quantity: <span class="quantity-label">${cartItem.quantity}</span>
             </span>
-            <span class="update-quantity-link link-primary">
+            <span class="update-quantity-link link-primary" >
               Update
             </span>
-            <span class="delete-quantity-link link-primary">
+            <span class="delete-quantity-link js-delete-quantity-link link-primary" data-product-id="${matchingProduct.id}">
               Delete
             </span>
           </div>
@@ -108,3 +106,17 @@ cart.forEach(cartItem => {
 // Dodavanje tih generiranih elemenata na stranicu
 document.querySelector('.js-order-summary')
   .innerHTML = cartSummaryHTML;
+
+// Brisanje proizvoda iz kartice
+// Listeneri na gumb delete
+document.querySelectorAll('.js-delete-quantity-link')
+  // Na svaki!
+  .forEach(link => {
+    link.addEventListener('click', () => {
+      // Brisanje iz kosarice
+      const productId = link.dataset.productId;
+      removeFromCart(productId);
+
+      // Brisanje vizualno sa stranice
+    })
+  });
