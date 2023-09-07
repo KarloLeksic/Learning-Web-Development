@@ -2,7 +2,7 @@
 // 1. Dodavanje tipa modula - u amazon.html-u na dnu
 // 2. Export - u cart.js
 // 3. input - tamo gdje je zelimo koristiti
-import { cart, addToCart } from '../data/cart.js';
+import { cart, addToCart, getCartQuantity, updateCartQuantityElement } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrecny } from './utils/money.js';
 // Vazno za module:
@@ -76,6 +76,8 @@ products.forEach(product => {
   `;
 });
 
+updateCartQuantityElement('.js-cart-quantity');
+
 // Gore u buttonu vidimo atribut data-product-id
 // Njegova je svrha dodati bilo koji atribut html elementu
 // Samo je bitno da pocinje sa data-
@@ -83,17 +85,7 @@ products.forEach(product => {
 // Stavljanje prethodno generiranog HTML-a na stranicu koristeci DOM
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
-function updateCartQuantity() {
-  // Racunanje koliko ukupno imamo u kosarici
-  // Prolazimo kroz sve proizvode u kosarici i zbrajamo kolicine
-  let cartQuantity = 0;
-  cart.forEach(cartItem => {
-    cartQuantity += cartItem.quantity;
-  });
-
-  // Prikazivanje tog broja u kosarici na vrhu stranice
-  document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-}
+updateCartQuantityElement('.js-cart-quantity');
 
 // Dodavenje funkcionalnosti na add to cart button
 document.querySelectorAll('.js-add-to-cart-button')
@@ -116,7 +108,7 @@ document.querySelectorAll('.js-add-to-cart-button')
 
       // Dodavanje u kosaricu i azuriranje broja u kosarici na vrhu stranice
       addToCart(productId, quantity);
-      updateCartQuantity();
+      updateCartQuantityElement('.js-cart-quantity');
     });
   });
 

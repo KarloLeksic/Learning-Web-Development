@@ -47,6 +47,16 @@ export function addToCart(productId, quantity) {
   saveToStorage();
 }
 
+// Promjena kolicine kad je vec u kosarici
+export function updateQuantity(productId, newQuantity) {
+  cart.forEach(cartItem => {
+    if(cartItem.productId === productId) {
+      cartItem.quantity = newQuantity;
+      saveToStorage();
+    }
+  });
+}
+
 export function removeFromCart(productId) {
   // Mozemo napraviti novi niz i onda u taj novi kopirati sve osim tog kojeg treba izbrisati i efektivno dobijemo brisnje
   let newCart = [];
@@ -61,4 +71,20 @@ export function removeFromCart(productId) {
   cart = newCart;
 
   saveToStorage();
+}
+
+export function getCartQuantity() {
+  // Racunanje koliko ukupno imamo u kosarici
+  // Prolazimo kroz sve proizvode u kosarici i zbrajamo kolicine
+  let cartQuantity = 0;
+  cart.forEach(cartItem => {
+    cartQuantity += cartItem.quantity;
+  });
+
+  return cartQuantity;
+}
+
+export function updateCartQuantityElement(quantityElementSelector) {
+  // Prikazivanje tog broja u kosarici na vrhu stranice
+  document.querySelector(quantityElementSelector).innerHTML = getCartQuantity();
 }
