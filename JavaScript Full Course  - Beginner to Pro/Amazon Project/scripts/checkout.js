@@ -25,7 +25,7 @@ cart.forEach(cartItem => {
   // Generiranje HTML-a po proizvodu koji se poklapa
   cartSummaryHTML +=
     `
-    <div class="cart-item-container">
+    <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
       <div class="delivery-date">
         Delivery date: Tuesday, June 21
       </div>
@@ -118,5 +118,9 @@ document.querySelectorAll('.js-delete-quantity-link')
       removeFromCart(productId);
 
       // Brisanje vizualno sa stranice
+      const container = document.querySelector(
+        `.js-cart-item-container-${productId}`);
+
+      container.remove();
     })
   });
