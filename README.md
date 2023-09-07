@@ -6,7 +6,7 @@ To see results run this on chrome or any other browser
 
 ## HTML & CSS
 
-[Images properties](/HTML%20&%20CSS%20Full%20Course%20-%20Beginner%20to%20Pro/Notes/images.html)
+[Image properties](/HTML%20&%20CSS%20Full%20Course%20-%20Beginner%20to%20Pro/Notes/images.html)
 * Fit into the container
 * Position inside container
 
@@ -34,3 +34,11 @@ To see results run this on chrome or any other browser
 [JSON](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/objects.html#L72)
 
 [localStorage](/JavaScript%20Full%20Course%20%20-%20Beginner%20to%20Pro/objects.html#L84)
+
+[Animations](/Cysecor%20JavaScript%20course/Projekt%2005%20-%20Animacije/script.js)
+
+[Form Validation OOP](/Cysecor%20JavaScript%20course/Projekt%2008%20-%20Validacija%20Forme%20OOP/)
+
+[Cookies](/Cysecor%20JavaScript%20course/JS%20Tutorijal%2009%20-%20Cookies/notes.js)
+
+[AJAX, JSON, API](/Cysecor%20JavaScript%20course/JS%20Tutorijal%2010%20-%20AJAX,%20API,%20JSON/script.js)
