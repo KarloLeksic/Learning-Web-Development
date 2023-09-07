@@ -1,0 +1,1 @@
+Tutorijali za JavaScript na [linku](https://www.youtube.com/watch?v=SBmSRK3feww&list=PLEPye7A7EcQZrT3VSBb7jtxnxIfY3yyG6&index=3&ab_channel=SuperSimpleDev)
