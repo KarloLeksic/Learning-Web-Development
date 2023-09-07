@@ -1,14 +1,23 @@
 // Prazna kosarica na pocetku
-export let cart = [
-  {
-    productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-    quantity: 1
-  },
-  {
-    productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
-    quantity: 2
-  }
-];
+export let cart = JSON.parse(localStorage.getItem('cart'));
+
+// Ako je kosarica prazna dodaj neke defaultne
+if (!cart) {
+  cart = [
+    {
+      productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+      quantity: 1
+    },
+    {
+      productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+      quantity: 1
+    }
+  ];
+}
+
+function saveToStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
 
 export function addToCart(productId, quantity) {
   // Provjera jel on vec u kosarici, ako je povecanje kolicine, ako nije dodavanje
@@ -34,6 +43,8 @@ export function addToCart(productId, quantity) {
       quantity: quantity
     });
   }
+
+  saveToStorage();
 }
 
 export function removeFromCart(productId) {
@@ -41,11 +52,13 @@ export function removeFromCart(productId) {
   let newCart = [];
 
   cart.forEach(cartItem => {
-    if(cartItem.productId !== productId) {
+    if (cartItem.productId !== productId) {
       newCart.push(cartItem);
     }
   });
 
   // Sad samo promijenimo da je nas cart taj novi cart
   cart = newCart;
+
+  saveToStorage();
 }
