@@ -1,5 +1,5 @@
 # Learning-Web-Development
-The materials I used to learn web programming and notes
+The materials and notes I used to learn web programming 
 
 # Notes
 To see results run this on chrome or any other browser
