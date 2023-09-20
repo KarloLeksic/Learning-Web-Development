@@ -1,3 +1,7 @@
 Za sjene mozemo koristiti Box shaddow generator - bilo koji sa googlea i onda odma vidimo kako shaddow izgleda
 
 Za rezanje rubova na gumbima, slikama, ... mozemo koristiti CSS clip path maker. On nam odreduje oblik. Samo ga stavimo na element koji zelimo da ima taj oblik
+
+Responzivan grid mozemo ovako: grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+Za responsive je ovo jako fora https://finsweet.com/client-first/docs/fluid-responsive
