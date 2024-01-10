@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Alpine.js Stores</title>
+</head>
+<body>
+
+<div :class="$store.darkMode.on && 'bg-gray-800 text-white'" class="container mx-auto mt-6 max-w-sm bg-gray-50 p-4"
+     x-data>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolorum est nemo quo sint unde. Cumque dolore
+    eaque, fugit ipsa molestiae odio placeat sit voluptates? Blanditiis cupiditate, deserunt dolorum ducimus eaque est
+    excepturi explicabo in, molestias quas sed velit voluptates.
+
+    <button
+            :class="$store.darkMode.on && 'bg-gray-700'"
+            @click="$store.darkMode.toggle()"
+            class="mt-4 block bg-gray-200 px-4 py-2 text-xs"
+    >
+        Toggle Dark Mode
+    </button>
+</div>
+
+<!--
+    Jos je fora mask plugin za upisivanje podataka od kartica, brojeve telefona
+    Automatski ce ih formatirati da imaju razmake, zareze, sto god
+    https://alpinejs.dev/plugins/mask
+-->
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.store('darkMode', {
+            on: false,
+
+            toggle() {
+                this.on = !this.on;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
