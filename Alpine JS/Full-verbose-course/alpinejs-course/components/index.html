@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Alpine.js Course Components</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+
+    <script
+            defer
+            src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script src="app.js"></script>
+</head>
+<body class="bg-gray-100 p-8">
+<!-- Dropdown -->
+<!-- Klik na gumb mijenja se flag za otvaranje -->
+<div x-data="{open: false}">
+    <button @click="open = !open"
+            class="inline-flex items-center rounded-md bg-purple-600 px-6 py-2 text-white shadow hover:bg-opacity-95"
+    >
+        Toggle
+        <!-- Stavljamo klasu da se rotira za 90 stupnjeva samo kada je modal otvoren -->
+        <svg :class="{'rotate-90' : open}"
+             class="ml-2 h-4 w-4 transition-all"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.5"
+             viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+        </svg>
+
+    </button>
+
+    <!-- Klik izvan ul i zatvara se dropdown -->
+    <ul @click.outside="open = false"
+        class="absolute bg-white py-1 shadow-md w-[160px]"
+        x-show="open"
+        x-transition
+    >
+        <li>
+            <a class="flex items-center px-2 py-1 hover:bg-gray-200" href="#">
+                <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                    <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Open
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center px-2 py-1 hover:bg-gray-200" href="#">
+                <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+                Edit
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center px-2 py-1 hover:bg-gray-200" href="#">
+                <svg class="mr-2 h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5"
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"/>
+                </svg>
+                Delete
+            </a>
+        </li>
+    </ul>
+</div>
+
+<br>
+<hr>
+<br>
+
+<!-- Modal -->
+<div x-data="{
+    open: false,
+    accept() {
+        console.log('Accepted!')
+    }
+}">
+    <button @click="open = true"
+            class="inline-flex items-center rounded-md bg-purple-600 px-6 py-2 text-white shadow hover:bg-opacity-95">
+        Toggle Modal
+    </button>
+
+    <template x-teleport="body">
+        <!-- Backdrop -->
+        <div class="fixed top-0 right-0 bottom-0 left-0 z-10 flex items-center justify-center bg-black/50"
+             x-show="open"
+        >
+
+            <!-- Dialog -->
+            <!-- Dialog sam po sebi nemože imati transition pa smo dodali x-show da bi postao alpine element da bi ju imao -->
+            <div @click.outside="open = false"
+                 class="overflow-hidden rounded-lg bg-white w-[90%] xl:w-1/2"
+                 x-show="open"
+                 x-transition>
+                <!-- Modal Title -->
+                <div class="flex items-center justify-between bg-gray-100 px-4 py-2 text-lg font-semibold">
+                    <h2>Modal Title</h2>
+                    <button @click="open = false">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-4">
+                    Modal Content
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="bg-gray-100 px-4 py-2 text-lg">
+                    <button @click="accept"
+                            class="inline-flex items-center rounded-md bg-emerald-500 px-3 py-1 text-white shadow hover:bg-opacity-95"
+                    >
+                        Accept
+                    </button>
+
+                    <button @click="open = false"
+                            class="inline-flex items-center rounded-md bg-gray-300 px-3 py-1 text-gray-800 shadow hover:bg-opacity-95"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+</div>
+
+<br>
+<hr>
+<br>
+
+<!-- Tabs -->
+<div x-data="{
+    activeTab: 'Home',
+    tabs: ['Home', 'Users', 'Settings']
+}">
+    <div class="flex">
+        <template x-for="tab in tabs">
+            <a :class="{'text-purple-500 border-purple-500' : activeTab === tab}"
+               @click="activeTab = tab"
+               class="cursor-pointer border bg-white px-3 py-1"
+               x-text="tab"
+            ></a>
+        </template>
+    </div>
+
+    <div class="border bg-white px-3 py-2">
+        <!-- Home -->
+        <div x-show="activeTab === 'Home'" x-transition>
+            Home
+        </div>
+
+        <!-- Users -->
+        <div x-show="activeTab === 'Users'" x-transition>
+            Users
+        </div>
+
+        <!-- Settings -->
+        <div x-show="activeTab === 'Settings'" x-transition>
+            Settings
+        </div>
+    </div>
+</div>
+
+<br>
+<hr>
+<br>
+
+<!-- Carousel -->
+<!-- Gubi se lik u videu, postoji boljih načina sigurno, ovo je samo okvirno da prebacuje slike -->
+<div x-data="{
+    images: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg'],
+    activeImage: null,
+    init() {
+        this.activeImage = this.images.length > 0 ? this.images[0] : null;
+    },
+
+    prev () {
+        let index = this.images.indexOf(this.activeImage);
+        if (index === 0) index = this.images.length;
+        this.activeImage = this.images[index - 1];
+    },
+
+    next () {
+        let index = this.images.indexOf(this.activeImage);
+        if (index === this.images.length - 1) index = -1;
+        this.activeImage = this.images[index + 1];
+    }
+}">
+    <div class="relative">
+        <template x-for="image in images">
+            <div class="aspect-w-3 aspect-h-2"
+                 x-show="activeImage === image"
+            >
+                <img :src="image" alt=""
+                     class="object-cover"
+                >
+            </div>
+        </template>
+
+        <div>
+            <a @click.prevent="next" class="absolute top-1/2 right-0 -translate-y-1/2 text-white" href="#">
+                <svg class="h-10 w-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="m8.25 4.5 7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a @click.prevent="prev" class="absolute top-1/2 left-0 -translate-y-1/2 text-white" href="#">
+                <svg class="h-10 w-10" fill="none" stroke="currentColor" stroke-width="1.5"
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.75 19.5 8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!--    <div class="flex">-->
+    <!--        <img alt="" src="img/1.jpg">-->
+    <!--        <img alt="" src="img/2.jpg">-->
+    <!--        <img alt="" src="img/3.jpg">-->
+    <!--        <img alt="" src="img/4.jpg">-->
+    <!--    </div>-->
+</div>
+
+<br>
+<hr>
+<br>
+
+<!-- Accordion -->
+<!-- Ideja je da mozemo imati samo jedan aktivan/otvoreni item -->
+<div x-data="{
+    items: [
+        {title: 'Item 1', body: 'Body 1'},
+        {title: 'Item 2', body: 'Body 2'},
+        {title: 'Item 3', body: 'Body 3'},
+        {title: 'Item 4', body: 'Body 4'}
+    ],
+    activeItem: null
+}">
+    <template x-for="item in items">
+        <div>
+            <div @click="activeItem = activeItem === item ? null : item"
+                 class="flex cursor-pointer items-center justify-between border bg-gray-200 px-2 py-1 font-bold transition-all hover:bg-gray-300 hover:text-blue-400"
+            >
+                <span x-text="item.title"></span>
+                <svg :class="{'rotate-90' : activeItem === item}" class="h-4 w-4 transition-all" fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.5"
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m8.25 4.5 7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+            </div>
+            <div class="border bg-white p-2"
+                 x-html="item.body"
+                 x-show="activeItem === item"
+            ></div>
+        </div>
+    </template>
+</div>
+
+<br>
+<hr>
+<br>
+
+<!-- Notification -->
+<!-- Poboljsana verzija gdje dodaje notifikaciju na gumb, a ponovnim pritiskom za vrijeme trajanja notifikacije se timer resetira i broji ponovo 5 sekundi -->
+<div
+        x-data="{
+        visible: false,
+        timeout: 5000,
+        percent: 100,
+        interval: null,
+        timerId: null,
+        show() {
+            this.visible = true;
+            this.percent = 100;
+            const startDate = Date.now();
+            const futureDate = startDate + this.timeout;
+
+            clearInterval(this.interval);
+            this.interval = setInterval(() => {
+                const currentDate = Date.now();
+                this.percent = 100 - (currentDate - startDate) * 100 / (futureDate - startDate);
+            }, 25);
+
+            clearTimeout(this.timerId);
+            this.timerId = setTimeout(() => {
+                this.visible = false;
+                clearInterval(this.interval);
+            }, this.timeout);
+        },
+        close() {
+            clearInterval(this.interval);
+            clearTimeout(this.timerId);
+            this.visible = false;
+        }
+     }"
+        x-init="show"
+>
+    <button @click="show"
+            class="my-4 rounded bg-emerald-500 px-6 py-2 text-white transition-colors hover:bg-emerald-600"
+    >Get notification
+    </button>
+    <div class="relative bg-emerald-500 px-4 py-4 text-white" x-show="visible">
+        <div class="mb-2 font-bold">
+            Lorem ipsum dolor sit amet.
+        </div>
+
+        <div class="text-sm">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi dolorem exercitationem fuga illo
+            iusto
+            nihil obcaecati, placeat praesentium repellat, reprehenderit rerum totam veritatis? Ab doloremque ea eius
+            error
+            fugiat illo ipsa iste itaque minus nam non nostrum praesentium quam quas, quasi quo quod sapiente, sit
+            suscipit
+            tempora velit voluptatem!
+        </div>
+        <button @click="close"
+                class="absolute top-2 right-2 flex items-center justify-center rounded-full transition-colors w-[30px] h-[30px] hover:bg-black/10">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
+        </button>
+
+        <!-- Progress -->
+        <div>
+            <div :style="{'width' : `${percent}%`}"
+                 class="absolute bottom-0 left-0 bg-black/50 h-[6px]"
+            ></div>
+        </div>
+    </div>
+</div>
+
+<!-- Popover -->
+<div class="relative flex justify-center"
+     x-data="{
+    show: false,
+    title: 'Test popover',
+    message: 'Test <b>popover</b> message',
+
+    showPopover() {
+        this.show = !this.show;
+    },
+
+    closePopover() {
+        this.show = false;
+    }
+}"
+>
+    <button @click="showPopover"
+            class="my-4 items-center rounded-md bg-purple-600 px-6 py-2 text-white shadow iline-flex hover:bg-opacity-95"
+    >
+        Popover
+    </button>
+    <div class="absolute rounded bg-white shadow-lg w-[200px] bottom-[100%]"
+         x-show="show"
+         x-transition>
+
+        <!-- Popover Header -->
+        <div class="flex items-center justify-between px-2 py-1 font-bold">
+            <span x-text="title"></span>
+            <svg class="h-4 w-4 cursor-pointer" @click="closePopover" fill="none" stroke="currentColor"
+                 stroke-width="1.5"
+                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <!-- Body -->
+        <div class="p-3 text-sm" x-html="message">
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
