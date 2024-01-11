@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Alpine.js Course</title>
+
+    <script
+            defer
+            src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<!-- x-data, x-text, x-html -->
+<!-- Da bi napravili Apline element moramo mu dati atribut x-data -->
+<div x-data="{name: 'Karlo', message: 'Hello <b>World</b>'}">
+    <p x-text="name"></p>
+    <p x-html="message"></p>
+</div>
+
+<div
+        x-data
+        x-text="(await fetch('https://jsonplaceholder.typicode.com/todos/1')).text()"
+></div>
+
+<!-- x-data with methods - nesmijemo koristiti arrow funkcije -->
+<div x-data="{
+    message: 'Click To Change',
+    change(){
+        this.message = 'Changed Message'
+    }
+}">
+    <span @click="change()" x-text="message"></span>
+</div>
+
+<!-- Re-usable Data - dropdown example -->
+<!-- Zato kad smo ih definirali u JS-u, tu samo napišemo njihov naziv -->
+<!-- Oni dva su neovisni, ali pošto imaju istu svrhu onda je dobro koristiti podatke na takav način -->
+<div x-data="dropdown">
+    <button @click="toggle">Open/Close</button>
+    <div x-show="open">
+        Content ...
+    </div>
+</div>
+
+<div x-data="dropdown">
+    <button @click="toggle">Open/Close</button>
+    <div x-show="open">
+        Content ...
+    </div>
+</div>
+
+<!-- Data-Less components -->
+<!-- Svrha ovoga je samo da se taj blok pretvori u alpine element da bi nam radio kod -->
+<div @click="alert('Something')" x-data>
+    Click Me!
+</div>
+
+<!-- Data coming from Store -->
+<!-- Kad želimo pristupiti podacima pohranjenima u store, onda to radimo za $store i dalje naziv podataka ... -->
+<div x-data x-text="$store.currentUser.posts">
+
+</div>
+
+<!-- x-init -->
+<!-- Ovo je drugi način kako možemo napraviti alpine komponentu (prvi je sa x-data koji je puno češći) -->
+<div x-init="console.log('Init')">
+    x-init se izvršava pri pokretanju
+</div>
+
+<div x-data="{
+    init() {
+    // Ovo je drugi način na koji možemo napraviti da se izvršava na početku, pri učitavanju
+    console.log('I am initalized');
+    }
+}"></div>
+
+<div
+        x-data="{todo: {}}"
+        x-init="todo = await ((await fetch('https://jsonplaceholder.typicode.com/todos/1')).json())"
+>
+    <p x-text="todo.title"></p>
+</div>
+
+<!-- Scoping -->
+<!-- On gleda od unutra prema van pa je zato našao Marry kad upišemo name u paragraf u sredini -->
+<div x-data="{
+    name: 'Karlo',
+    age: 23,
+    gender: 'male'
+}">
+    <div x-data="{name: 'John', age: 25}">
+        <div x-data="{name: 'Marry'}">
+            <p x-text="age"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Getters & Setters -->
+<div x-data="{
+    open: false,
+    get isOpen() {
+        return this.open;
+    },
+
+    set isOpen(open) {
+        this.open = open;
+    },
+
+    toggle() {
+        this.isOpen = !this.isOpen;
+    }
+}">
+    <button @click="toggle">Open/Close</button>
+    <div x-show="open">
+        Content ...
+    </div>
+</div>
+
+<!-- x-show & x-transition -->
+<div x-data="{
+    open: false,
+
+    toggle() {
+        this.open = !this.open;
+    }
+}">
+    <button @click="toggle">Open/Close</button>
+    <div x-show="open"
+         x-transition:enter.duration.200ms
+         x-transition:leave.duration.2000ms
+    >
+        Content ...
+    </div>
+</div>
+
+<!-- x-if -->
+<!-- Oni su dostupni samo i template elementima -->
+<!-- Kad imamo x-if onda je element uklonjen iz DOM-a, dok je sa x-show samo na display none -->
+<div x-data="{
+    open: false,
+
+    toggle() {
+        this.open = !this.open;
+    }
+}">
+    <button @click="toggle">Open/Close</button>
+    <template x-if="open">
+        <div x-show="open">Content ...</div>
+    </template>
+</div>
+
+<!-- x-for -->
+<div x-data="{
+    posts: [{id: 1, title: 'Post 1'}, {id: 2, title: 'Post 2'}]
+}">
+    <!-- Treba imati ovaj key koji će biti unikatan -->
+    <template :key="p.id" x-for="p in posts">
+        <h2 x-text="p.id + ' - ' + p.title"></h2>
+    </template>
+</div>
+
+<!-- x-for in range -->
+<div x-data>
+    <template x-for="n in 5">
+        <p x-text="n"></p>
+    </template>
+</div>
+
+<!-- x-bind: class  -->
+<!-- Specifično za klase je da ih bind dodaje, dok će recimo ID promijeniti - pregaziti -->
+<!-- x-bind je opcionalno, možemo samo pisati :class -->
+<div x-data="{clicked: false}">
+    <button :class="clicked ? 'yellow' : ''" @click="clicked = true" class="bordered">
+        Click Me!
+    </button>
+</div>
+<style>
+    .bordered {
+        border: 2px solid brown;
+    }
+
+    .yellow {
+        background-color: yellow;
+    }
+</style>
+
+<!-- x-bind: style -->
+<div x-data="{clicked: false}">
+    <button :style="{backgroundColor: clicked ? 'red' : ''}" @click="clicked = !clicked">
+        Click Me!
+    </button>
+</div>
+
+<!-- x-bind id, ali možemo i bilo koji atribut tako -->
+<!-- Ovdje vidimo kako svaki put kada kliknemo na button dobijemo random ID -->
+<button
+        :id="id"
+        @click="id = Math.round(Math.random() * 1000000)"
+        x-data="{id: ''}"
+>
+    Button
+</button>
+
+<!-- Challenge -->
+<div x-data="{colors: ['red', 'green', 'blue']}">
+    <!-- Iterate over colors and display 40x40 px boxes with given colors -->
+    <template x-for="color in colors">
+        <div :style="{backgroundColor: color}" class="color-box" x-text="color"></div>
+
+        <!-- Također možemo koristiti `` pa stavljati varijable kao $imeVarijable -->
+        <!-- <div x-text="color" class="color-box" :style="`background-color: ${color}`"></div>-->
+    </template>
+</div>
+<style>
+    .color-box {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+</style>
+
+<!-- x-on / @ - event listeneri -->
+<div @edit="console.log('Edit was triggerred')" @scroll.window="console.log('scroll')" x-data>
+    <!-- Ovaj $event nam daje kao kod arrow funkcija kad predamo e kao element, isto ovo dobivamo tu -->
+    <button @click="console.log('Clicked 1', $event)">Click 1</button>
+
+    <!-- Samo kad se stisne enter onda nam okine event -->
+    <input @keyup.enter="console.log('keyup')" type="text">
+
+    <!-- Ovo će samo jednom okinuti event bez obzira jel obrišemo ili bilo što napravimo -->
+    <input @keyup.once="console.log('once')" type="text">
+
+    <!-- Ovo nam radi onaj debounce - okida samo kad je gotovo i kad x vremena nema promjene-->
+    <input @keyup.debounce="console.log('debounce')" type="text">
+
+    <!-- throttle - okida samo kad je gotovo i svakih x sekundi/ms -->
+    <div @scroll.window.throttle="console.log('throttle')" type="text"
+    'throttle')">
+</div>
+
+<!-- Ovo je jako zgodna stvar jel ce se samo zatvoriri ako se klikne izvana -->
+<div x-data="{modal: false}">
+    <button @click="modal = true">Show Modal</button>
+    <div @click.outside="modal = false" x-show="modal">
+        Modal Content ...
+    </div>
+</div>
+
+<!-- Ovo može izvršiti neku funkciju koja je negdje bilo gdje u ovoj komponenti -->
+<button @click="$dispatch('edit')">Edit</button>
+</div>
+
+<!-- x-model - da se sinkronizira sa inputom -->
+<!-- Isto možemo debounce raditi i throttle -->
+<div x-data="{keyword: ''}">
+    <input placeholder="Serach for items ..." type="text" x-model="keyword">
+    <p x-text="keyword"></p>
+</div>
+
+<!--
+    Challenge: Create a button and 3 inputs.
+    1st input for text. Whatever you write inside the input that should become
+    the text of the button.
+    2nd input for background color. Whatever you type inside the input and that will become button background color
+    3rd input for button id. Whatever you type inside that will become button id
+-->
+
+<div x-data="{
+    color: '',
+    text: '',
+    id: ''
+}">
+    <button :id="id" :style="{backgroundColor: color}" x-text="text"></button>
+    <input placeholder="Button Text" type="text" x-model="text">
+    <input placeholder="Button Color" type="text" x-model="color">
+    <input placeholder="Button Id" type="text" x-model="id">
+</div>
+
+<!-- x-effect -->
+<!-- Gleda promijenu nekog parametra i kad se promijeni, on izvrši to što je u njemu -->
+<div x-data="{name: 'Karlito', message: null}">
+    <p x-effect="message = 'Hello ' + name"></p>
+    <p x-text="message"></p>
+</div>
+
+<!-- Ovo je primjer iz dokumentacije -->
+<!-- Svaki put kad se klikne na gumb, promijeni se string. Iz razloga što je taj string u efektu, izvršit će se taj kod iz efecta -->
+<!-- Kad bi bilo da ispisuje npr. Bok, onda se nebi izvršavalo kad se klikne button -->
+<div x-data="{ label: 'Hello' }" x-effect="console.log(label)">
+    <button @click="label += ' World!'">Change Message</button>
+</div>
+
+<!-- x-ignore, ništa se neće ispisati jel ga ovaj ignorira -->
+<div x-data="{name: 'Karlito'}">
+    <div x-ignore>
+        <p x-text="name"></p>
+    </div>
+</div>
+
+<!-- x-ref -->
+<!-- Referenciramo si button i onda sa $refs.nazivKojegSmoDali dohvatimo taj element i radimo s njim što god treba -->
+<div x-data>
+    <input placeholder="Email" type="text" x-ref="inputEmail">
+    <button @click="$refs.inputEmail.style.borderColor = 'red'">Check</button>
+</div>
+
+<!-- x-cloak -->
+<!-- Da nam nebi flickerali elementi koje želimo sakriti dodamo x-cloak u element koji je skriven i u style -->
+<div x-data="dropdown">
+    <button @click="toggle">Open/Close</button>
+    <div x-cloak x-show="open">
+        Content ...
+    </div>
+</div>
+
+<style>
+    [x-cloak] {
+        display: none;
+    }
+</style>
+
+<!-- x-teleport, moramo mu predati html element i on će ga premjersiti kako nebi bio jako duboko ugnježden -->
+<!-- Nakon ovakvog podešavanja, taj div će biti u body-ju i prikazat će se poslje ovog drugog dugog kontenta -->
+<!-- Ako modal treba prekrivati sve, onda bi trebao biti u body-ju, a ne ugnjezden negdje duboko -->
+<div x-data>
+    <p>Some Long Content</p>
+    <div x-data="{modal: false}">
+        <button @click="modal = true">Show Modal</button>
+        <template x-teleport="body">
+            <div x-show="modal">
+                Modal Content ...
+            </div>
+        </template>
+    </div>
+    <p>Some Long Content</p>
+</div>
+
+<!-- Magic Properties -->
+<!-- $el -->
+<!-- Isto kao što u foreach element bude, trenutni element -->
+<div x-data x-init="console.log('init', $el)">
+    <button @click="console.log($el)">button</button>
+</div>
+
+<!-- $refs -->
+
+<!-- $store -->
+
+<!-- $watch -->
+<!-- On sluša taj property kojeg mu dajemo, i kad god se promijeni, on trigeruje funkciju -->
+<!-- Također možemo pratiti staru vrijednost ako dodamo još jedan parametar (old ovdje) -->
+<div x-data="{modal: false}" x-init="$watch('modal', (val, old) => console.log(val, old))">
+    <button @click="modal = !modal">$watch example</button>
+</div>
+
+<!-- $dispatch -->
+
+<!-- $nextTick -->
+<div x-data="{name: 'Karlo'}">
+    <!-- Ovo će isprintati staro na ovaj naćin jer alpine nije završio svoj change cycle -->
+    <button @click="name = 'John'; console.log($refs.p.innerText)">Change Name</button>
+    <p x-ref="p" x-text="name"></p>
+</div>
+
+<!-- Ako želimo da nam ispiše novo ime onda moramo koristiti nextTick -->
+<div x-data="{name: 'Karlo'}">
+    <button @click="name = 'John'; $nextTick(() => console.log($refs.p.innerText))">Change Name</button>
+    <p x-ref="p" x-text="name"></p>
+</div>
+
+<!-- $root -->
+<!-- Dohvaća nam root element kada ga želimo -->
+<!-- Ako imamo situaciju kao ispod, on će ići iznutra prema van i dobit ćemo tu najbližu komponentu (id->2) -->
+<div id="1" x-data>
+    <div>
+        <div id="2" x-data>
+            <div>
+                <button @click="console.log($root)">Root Button</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- $data -->
+<!-- Da pristupimo podacima u alpine komponenti -->
+<div x-data="{name: 'Karlo'}">
+    <div>
+        <button @click="console.log($data.name)">$data gumb</button>
+    </div>
+</div>
+
+<!-- $id -->
+<div x-data>
+    <div x-data="{ id: $id('text-input') }">
+        <label :for="id"> <!-- "text-input-1" -->
+            <input type="text" :id="id"> <!-- "text-input-1" -->
+    </div>
+</div>
+
+</body>
+</html>
