@@ -2,28 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Alpine.js Plugins</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 
+    <!-- Alpine Mask -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.10.2/dist/cdn.min.js"></script>
+
+    <!-- Alpine Intersect -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.10.2/dist/cdn.min.js"></script>
+
     <!-- Alpine Core -->
-    <script
-            defer
-            src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
-    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js"></script>
 </head>
 <body>
 <!-- Mask -->
+<!-- Odma dobijemo i validaciju podataka -->
+<div x-data>
+    <input placeholder="MM/DD/YYYY" x-mask="99/99/9999">
+
+    <br>
+
+    <!-- Ovako mozemo postaviti masku u ovisnosti o vrijednostima koje korisnik upiše -->
+    <input x-mask:dynamic="
+    $input.startsWith('34') || $input.startsWith('37')
+        ? '9999 999999 99999' : '9999 9999 9999 9999'
+"></div>
 
 <!-- Intersect -->
+<!-- Animacija da automatski kad element dode u viewport da se prikaže -->
+<div x-data="{ shown: false }" x-intersect="shown = true">
+    <div x-show="shown" x-transition>
+        I'm in the viewport!
+    </div>
+</div>
+<!--Ne vidi se, ali kad bi bilo više stvari onda bi se vidla ljepa animacija, ima u dokumentaciji primjer-->
+<!--Također možemo napraviti lazy loading što znači da se slika učitava kada se do nje dođe
+-->
+<!--Postavimo src na null i onda sa x-intersect postavimo pravi src i time dobivamo da se request šalje kada se dođe do slike na stranici -->
+<!-- Bitno je da stavimo x-intersect.once da nam se nebi svaki put kad idemo gore dole slali requestovi -->
 
 <!-- Persist -->
+<!--da se spremi u local storage podatak-->
+<!--Možemo koristiti i druge vrste storagea kao npr. session storage-->
 
 <!-- Focus -->
+<!--Ako se otvori neki modal iimamo inpute unutra, ovaj plugin nam omogućuje kada smo na zadnjem elementu, pritiskom na tab da se vraćamo na prvi element i tako u krug -->
 
 <!-- Collapse -->
+<!--Za animiranja skraćivanja bloka koji prikazuje tekst. Možemo postaviti da se vidi samo malo teksta i onda read more button pa da se proširi. Animirano je po defaultu -->
 
 <!-- Morph -->
 </body>
